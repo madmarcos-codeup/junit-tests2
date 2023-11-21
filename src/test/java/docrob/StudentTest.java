@@ -47,4 +47,28 @@ public class StudentTest {
         assertEquals(75, bob.getGrades().get(0).intValue());
     }
 
+    // 85.66666666
+    @Test
+    public void testUpdateGrade() {
+        bob.updateGrade(0, 75);
+        assertEquals(85.66, bob.getGradeAverage(), 0.01);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testUpdateGradeBadIndex() {
+        bob.updateGrade(3, 100); // should cause exception
+    }
+
+    @Test
+    public void testDeleteGrade() {
+        bob.deleteGrade(2); // delete the 3rd grade (77 + 92)
+        assertEquals(84.5, bob.getGradeAverage(), 0.1);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testDeleteGradeBadIndex() {
+        bob.deleteGrade(3); // should cause exception
+    }
+
+
 }

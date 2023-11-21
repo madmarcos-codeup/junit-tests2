@@ -44,4 +44,23 @@ public class Student {
 
         return sum / grades.size();
     }
+
+    // change the grade at index to newGrade
+    public void updateGrade(int index, int newGrade) {
+        if(index > grades.size() - 1) {
+            throw new IndexOutOfBoundsException("Invalid index");
+        }
+
+        grades.set(index, newGrade);
+    }
+
+    // delete the grade at given index
+    // returns the deleted grade
+    public int deleteGrade(int index) {
+        if(index > grades.size() - 1) {
+            throw new IndexOutOfBoundsException("Invalid index");
+        }
+
+        return grades.remove(index);
+    }
 }
